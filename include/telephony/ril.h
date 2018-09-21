@@ -422,7 +422,10 @@ typedef struct {
 
 typedef struct {
     RIL_CallState   state;
-    int             index;      /* Connection Index for use with, eg, AT+CHLD */
+    unsigned char   index;      /* Connection Index for use with, eg, AT+CHLD */
+    unsigned char   call_id;    /* Samsung field */
+    unsigned char   pad;        /* Unsigned gap padding */
+    char            pad1;       /* Signed gap padding */
     int             toa;        /* type of address, eg 145 = intl */
     char            isMpty;     /* nonzero if is mpty call */
     char            isMT;       /* nonzero if call is mobile terminated */
@@ -434,6 +437,8 @@ typedef struct {
     int             numberPresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
     char *          name;       /* Remote party name */
     int             namePresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
+    void *          call_details1; /* Padding for Samsung's call detail fields */
+    void *          call_details2; /* Padding for Samsung's call detail fields */
     RIL_UUS_Info *  uusInfo;    /* NULL or Pointer to User-User Signaling Information */
 } RIL_Call;
 
@@ -586,12 +591,8 @@ typedef struct {
     int errorCode;    /* See 3GPP 27.005, 3.2.5 for GSM/UMTS,
                          3GPP2 N.S0005 (IS-41C) Table 171 for CDMA,
                          -1 if unknown or not applicable*/
-} RIL_SMS_Response;
-
-typedef struct {
-    RIL_SMS_Response response;
     int retryCount;   /* Samsung */
-} RIL_SMS_Response_Ext;
+} RIL_SMS_Response;
  
 /** Used by RIL_REQUEST_WRITE_SMS_TO_SIM */
 typedef struct {
