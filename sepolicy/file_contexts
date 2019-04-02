@@ -119,7 +119,7 @@
 /system/bin/cbd              u:object_r:cbd_exec:s0
 /system/bin/sswap            u:object_r:sswap_exec:s0
 /system/bin/gpsd             u:object_r:gpsd_exec:s0
-/system/vendor/bin/hw/android.hardware.drm@1.0-service.widevine    u:object_r:drm_exec:s0
+/vendor/bin/hw/android.hardware.drm@1.0-service.widevine    u:object_r:drm_exec:s0
 # gps
 /dev/gnss_ipc                u:object_r:gps_device:s0
 

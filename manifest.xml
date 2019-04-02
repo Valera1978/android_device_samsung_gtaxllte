@@ -69,15 +69,6 @@
          </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.samsung.hardware.gnss</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISecGnss</name>
-            <instance>default</instance>
-        </interface>
-   </hal>
-    <hal format="hidl">
         <name>vendor.lineage.power</name>
         <transport arch="32+64">passthrough</transport>
         <version>1.0</version>
@@ -95,15 +86,15 @@
             <instance>default</instance>
         </interface>
     </hal>
-<!--    <hal format="hidl">
+    <hal format="hidl">
         <name>android.hardware.gnss</name>
-        <transport arch="32">passthrough</transport>
-        <version>1.1</version>
+        <transport arch="32+64">passthrough</transport>
+        <version>1.0</version>
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
         </interface>
-    </hal> -->
+    </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.allocator</name>
         <transport>hwbinder</transport>
@@ -194,15 +185,15 @@
         <transport arch="32+64">passthrough</transport>
         <version>1.0</version>
     </hal>
-<!--    <hal format="hidl">
+    <hal format="hidl">
         <name>android.hardware.sensors</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>ISensors</name>
             <instance>default</instance>
         </interface>
-    </hal> -->
+    </hal>
     <hal format="hidl">
         <name>android.hardware.usb</name>
         <transport>hwbinder</transport>

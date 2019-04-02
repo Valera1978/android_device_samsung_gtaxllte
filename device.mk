@@ -137,8 +137,8 @@ PRODUCT_PACKAGES += \
     libhwjpeg \
     libion_exynos
 
-PRODUCT_PACKAGES += \
-    libexynoscamera_shim
+#PRODUCT_PACKAGES += \
+#    libexynoscamera_shim
 
 #PRODUCT_PACKAGES += \
 #    Snap
@@ -214,19 +214,20 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio/mixer_gains.xml:system/etc/mixer_gains.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_rev00.xml:system/etc/mixer_paths_rev00.xml
+    $(LOCAL_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_gains.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_rev00.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_rev00.xml
 
 PRODUCT_PACKAGES += \
-    audio.primary.universal7870 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
     libtinycompress \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl
+
+#    audio.primary.universal7870 \
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -297,6 +298,13 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
+
+# VNDK
+PRODUCT_PACKAGES += \
+    vndk-sp
+
+# Vendor properties
+-include $(LOCAL_PATH)/vendor_prop.mk
 
 # ADB
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \

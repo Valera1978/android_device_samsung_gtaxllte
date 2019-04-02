@@ -42,6 +42,22 @@ on post-fs-data
     chmod 0660 /dev/i2c-20
     chown audio audio /dev/i2c-20
 
+# Permissions for gnss
+    chmod 0660 /dev/gnss_ipc
+    chown system system /dev/gnss_ipc
+
+# Directory for GPS
+    mkdir /data/system 0771 system system
+    chown system system /data/system
+    mkdir /data/system/gps 0771 system system
+    chown system system /data/system/gps
+    rm /data/system/gps/gps_started
+    rm /data/system/gps/glonass_started
+    rm /data/system/gps/beidou_started
+    rm /data/system/gps/smd_started
+    rm /data/system/gps/sv_cno.info
+
+
     setprop vold.post_fs_data_done 1
 
 # /efs/factory.prop for Dual / Single SIM settings
@@ -501,6 +517,13 @@ service argos-daemon /system/bin/argosd
     class main
     user system
     group system radio
+
+# GPS
+service gpsd /vendor/bin/gpsd
+    class main
+    user gps
+    group system inet wakelock
+    ioprio be 0
 	
 # LPM
 on property:ro.bootmode=charger

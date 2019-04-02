@@ -1,0 +1,57 @@
+#============= adbd ==============
+allow adbd debugfs_tracing_debug:file write;
+
+#============= audioserver ==============
+allow audioserver audio_device:chr_file { ioctl open };
+
+#============= bootanim ==============
+allow bootanim debugfs_tracing_debug:file { open write };
+allow bootanim vendor_file:file read;
+
+#============= crash_dump ==============
+allow crash_dump debugfs_tracing_debug:file write;
+
+#============= dex2oat ==============
+allow dex2oat debugfs_tracing_debug:file { open write };
+
+#============= hal_gnss_default ==============
+allow hal_gnss_default default_android_hwservice:hwservice_manager { add find };
+
+#============= hal_power_default ==============
+allow hal_power_default sysfs:file write;
+
+#============= init ==============
+allow init debugfs_tracing_debug:dir { add_name create write };
+allow init sysfs_wake_lock:file { open write };
+allow init tee_device:chr_file getattr;
+allow init vendor_file:file execute;
+
+#============= installd ==============
+allow installd debugfs_tracing_debug:file { open write };
+
+#============= netd ==============
+allow netd debugfs_tracing_debug:file { open write };
+
+#============= platform_app ==============
+allow platform_app vendor_file:file read;
+
+#============= surfaceflinger ==============
+allow surfaceflinger default_android_service:service_manager { add find };
+
+#============= system_app ==============
+allow system_app vendor_file:file { execute getattr open read };
+
+#============= system_server ==============
+allow system_server sysfs:file { getattr open write };
+allow system_server sysfs_vibrator:file { open read };
+allow system_server vendor_file:file { execute getattr open read };
+
+#============= vold ==============
+allow vold debugfs_tracing_debug:file { open write };
+
+#============= wificond ==============
+allow wificond debugfs_tracing_debug:file { open write };
+
+#============= zygote ==============
+allow zygote debugfs_tracing_debug:file { getattr open write };
+allow zygote vendor_file:file { execute getattr open read };
